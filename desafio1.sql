@@ -21,9 +21,9 @@ DROP DATABASE IF EXISTS SpotifyClone;
     artista VARCHAR (255) NOT NULL
   ) engine = InnoDB;
 
-  CREATE TABLE SpotifyClone.musicas(
-    musicas_id INT AUTO_INCREMENT PRIMARY KEY,
-    musicas VARCHAR (255) NOT NULL,
+  CREATE TABLE SpotifyClone.cancoes(
+    cancoes_id INT AUTO_INCREMENT PRIMARY KEY,
+    cancoes VARCHAR (255) NOT NULL,
     duracao_segundos INT,
     album_id INT,
     FOREIGN KEY albuns(album_id) REFERENCES albuns(album_id)
@@ -38,10 +38,10 @@ DROP DATABASE IF EXISTS SpotifyClone;
   ) engine = InnoDB;
 
   CREATE TABLE SpotifyClone.historico(
-    musicas_id INT,
+    cancoes_id INT,
     usuario_id INT,
     data_de_reproducao datetime,
-    FOREIGN KEY musicas(musicas_id) REFERENCES musicas(musicas_id),
+    FOREIGN KEY cancoes(cancoes) REFERENCES cancoes(cancoes),
     FOREIGN KEY usuario(usuario_id) REFERENCES usuarios(usuario_id)
   ) engine = InnoDB;
 
@@ -94,7 +94,7 @@ DROP DATABASE IF EXISTS SpotifyClone;
     (10, 'Jorge Amado', 58, 4);
     
   
-	INSERT INTO SpotifyClone.musicas(musicas, duracao_segundos, album_id)
+	INSERT INTO SpotifyClone.cancoes(cancoes, duracao_segundos, album_id)
   VALUES
     ('Samba em Paris', 267, 6),
     ("VIRGO'S GROOVE", 369, 1),
@@ -106,10 +106,8 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('Under Pressure', 152, 3),
     ('BREAK MY SOUL', 279, 1),
     ('Como Nossos Pais', 105, 4);
-    
 
-  
-	INSERT INTO SpotifyClone.historico(musicas_id, usuario_id, data_de_reproducao)
+	INSERT INTO SpotifyClone.historico(cancoes, usuario_id, data_de_reproducao)
 	VALUES
 	  (1, 1, '2022-02-28 10:45:55'),
     (2, 1, '2020-05-02 05:30:35'),
