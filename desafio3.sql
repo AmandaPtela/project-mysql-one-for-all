@@ -10,6 +10,6 @@ ON historico_table.user_id = user_table.usuario_id
 
 INNER JOIN SpotifyClone.cancoes AS cancoes_table
 
-ON cancoes_table.cancoes_id = historico_table.user_id
+ON cancoes_table.cancoes_id = historico_table.cancoes_id
 GROUP BY usuario
 ORDER BY usuario;
