@@ -24,11 +24,11 @@ DROP DATABASE IF EXISTS SpotifyClone;
   
 	INSERT INTO SpotifyClone.artistas (artista)
   VALUES
-    ('Beyonce'),
+    ('Beyoncé'),
     ('Queen'),
     ('Elis Regina'),
     ('Baco Exu do Blues'),
-    ('Blind Guaurdian'),
+    ('Blind Guardian'),
     ('Nina Simone');
     
 	CREATE TABLE SpotifyClone.albuns(
