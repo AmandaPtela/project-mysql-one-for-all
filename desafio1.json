@@ -1,6 +1,6 @@
 {
   "tabela_usuario": "usuarios",
-  "coluna_usuario": "usuario",
+  "coluna_usuario": "usuario_name",
   "tabela_plano": "planos",
   "coluna_plano": "plano",
   "tabela_historico_de_reproducoes": "historico",

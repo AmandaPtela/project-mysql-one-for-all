@@ -9,8 +9,8 @@ DROP DATABASE IF EXISTS SpotifyClone;
   ) engine = InnoDB;
   
   CREATE TABLE SpotifyClone.usuarios(
-    usuario_id INT UNIQUE PRIMARY KEY,
-    usuario VARCHAR (255) NOT NULL,
+    usuario_id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_name VARCHAR (255) NOT NULL,
     idade INT NOT NULL,
     plano_id INT NOT NULL,
     data_de_assinatura datetime,
@@ -57,18 +57,18 @@ DROP DATABASE IF EXISTS SpotifyClone;
     ('universitario', 5.99),
     ('pessoal', 6.99);
 
-  INSERT INTO SpotifyClone.usuarios (usuario_id, usuario, idade, plano_id, data_de_assinatura)
+  INSERT INTO SpotifyClone.usuarios (usuario_name, idade, plano_id, data_de_assinatura)
   VALUES
-    (1, 'Barbara Liskov', 82, 1, '2019-10-20'),
-    (2, 'Robert Cecil Martin', 58, 1, '2017-01-06'),
-    (3, 'Ada Lovelace', 37, 2, '2017-12-30'),
-    (4, 'Martin Fowler', 46, 2, '2017-01-17'),
-    (5, 'Sandi Metz', 58, 2, '2018-04-29'),
-    (6, 'Paulo Freire',19, 3, '2018-02-14'),
-    (7, 'Bell Hooks', 26, 3, '2018-01-05'),
-    (8, 'Christopher Alexander', 85, 4, '2019-06-05'),
-    (9, 'Judith Butler', 45, 4, '2020-05-13'),
-    (10, 'Jorge Amado', 58, 4, '2017-01-06');
+    ('Barbara Liskov', 82, 1, '2019-10-20'),
+    ('Robert Cecil Martin', 58, 1, '2017-01-06'),
+    ('Ada Lovelace', 37, 2, '2017-12-30'),
+    ('Martin Fowler', 46, 2, '2017-01-17'),
+    ('Sandi Metz', 58, 2, '2018-04-29'),
+    ('Paulo Freire',19, 3, '2018-02-14'),
+    ('Bell Hooks', 26, 3, '2018-01-05'),
+    ('Christopher Alexander', 85, 4, '2019-06-05'),
+    ('Judith Butler', 45, 4, '2020-05-13'),
+    ('Jorge Amado', 58, 4, '2017-01-06');
 
 	CREATE TABLE SpotifyClone.cancoes(
     cancoes_id INT AUTO_INCREMENT PRIMARY KEY,
@@ -80,44 +80,44 @@ DROP DATABASE IF EXISTS SpotifyClone;
   
 	INSERT INTO SpotifyClone.cancoes(cancoes, duracao_segundos,album_id)
   VALUES
-    ('Samba em Paris', 267, 6),
-    ("VIRGO'S GROOVE", 369, 1),
-    ('Feeling Good', 100, 8),
-    ('Medo de Amar é o Medo de Ser Livre', 207, 5),
-    ("Don't Stop Me Now", 203, 2),
-    ("The Bard's Song", 244, 7),
-    ('ALIEN SUPERSTAR', 116, 1),
-    ('Under Pressure', 152, 3),
     ('BREAK MY SOUL', 279, 1),
-    ('Como Nossos Pais', 105, 4);
+    ('VIRGO’S GROOVE', 369, 1),
+    ('ALIEN SUPERSTAR', 116, 1),
+    ('Don’t Stop Me Now', 203, 2),
+    ('Under Pressure', 152, 3),
+    ('Como Nossos Pais', 105, 4),
+    ('O Medo de Amar é o Medo de Ser Livre', 207, 5),
+    ('Samba em Paris', 267, 6),
+    ('The Bard’s Song', 244, 7),
+    ('Feeling Good', 100, 8);
     
 	CREATE TABLE SpotifyClone.historico(
     cancoes_id INT,
-    usuario_id INT,
+    user_id INT,
     data_de_reproducao datetime,
-    CONSTRAINT PRIMARY KEY(usuario_id, cancoes_id),
+    CONSTRAINT PRIMARY KEY(user_id, cancoes_id),
     FOREIGN KEY cancoes(cancoes_id) REFERENCES cancoes(cancoes_id),
-    FOREIGN KEY usuario(usuario_id) REFERENCES usuarios(usuario_id)
+    FOREIGN KEY usuario(user_id) REFERENCES usuarios(usuario_id)
   ) engine = InnoDB;
   
-	INSERT INTO SpotifyClone.historico(cancoes_id, usuario_id, data_de_reproducao)
+	INSERT INTO SpotifyClone.historico(user_id, cancoes_id, data_de_reproducao)
 	VALUES
-	  (1, 1, '2022-02-28 10:45:55'),
-    (2, 1, '2020-05-02 05:30:35'),
-    (3, 1, '2020-03-06 11:22:33'),
-    (3, 2, '2022-08-05 08:05:17'),
-    (4, 2, '2020-01-02 07:40:33'),
-    (3, 3, '2020-11-13 16:55:13'),
-    (2, 3, '2020-12-05 18:38:30'),
-    (1, 4, '2021-08-15 17:10:10'),
-    (1, 5, '2022-01-09 01:44:33'),
-    (8, 4, '2020-08-06 15:23:43'),
-    (4, 6, '2017-01-24 00:31:17'),
-    (9, 6, '2017-10-12 12:35:20'),
-    (5, 7, '2011-12-15 22:30:49'),
-    (5, 8, '2012-03-17 14:56:41'),
-    (6, 9, '2022-02-24 21:14:22'),
-    (7, 10, '2015-12-13 08:30:22');
+    (1, 8, '2022-02-28 10:45:55'),
+    (1, 2, '2020-05-02 05:30:35'),
+    (1, 10, '2020-03-06 11:22:33'),
+    (2, 10, '2022-08-05 08:05:17'),
+    (2, 7, '2020-01-02 07:40:33'),
+    (3, 10, '2020-11-13 16:55:13'),
+    (3, 2, '2020-12-05 18:38:30'),
+    (4, 8, '2021-08-15 17:10:10'),
+    (5, 8, '2022-01-09 01:44:33'),
+    (5, 5, '2020-08-06 15:23:43'),
+    (6, 7, '2017-01-24 00:31:17'),
+    (6, 1, '2017-10-12 12:35:20'),
+    (7, 4, '2011-12-15 22:30:49'),
+    (8, 4, '2012-03-17 14:56:41'),
+    (9, 9, '2022-02-24 21:14:22'),
+    (10, 3, '2015-12-13 08:30:22');
     
   CREATE TABLE SpotifyClone.seguidores(
     usuario_id INT,
