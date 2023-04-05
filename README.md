@@ -1,4 +1,4 @@
-<strong> One For All </strong><br />
+<strong> MySql One For All </strong><br />
 
 O projeto consiste em revisar, normalizar na terceira forma normal, popular tabelas e assim utilizar do banco para buscar informações.
 Usando comandos _SQL_ para inserir e consumir dados do banco.
